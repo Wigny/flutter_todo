@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "86386209359",
+    "firebase_url": "https://fir-todo-b4529.firebaseio.com",
+    "project_id": "fir-todo-b4529",
+    "storage_bucket": "fir-todo-b4529.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:86386209359:android:043917144d71aa1b9e703a",
+        "android_client_info": {
+          "package_name": "dev.wigny.firebase_todo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "86386209359-2hnp477aop1ukh1a3sgrahiak1sdm8ef.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJ83Vj1efa1ZH36VL2s_Bd0fusRCyq7hI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "86386209359-2hnp477aop1ukh1a3sgrahiak1sdm8ef.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
