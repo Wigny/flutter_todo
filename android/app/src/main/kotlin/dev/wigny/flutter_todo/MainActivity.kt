@@ -1,4 +1,4 @@
-package dev.wigny.firebase_todo
+package dev.wigny.flutter_todo
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity

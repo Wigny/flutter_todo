@@ -1,4 +1,4 @@
-import 'package:firebase_todo/app/modules/home/models/todo_model.dart';
+import 'package:flutter_todo/app/modules/home/models/todo_model.dart';
 
 abstract class ITodoRepository {
   Stream<List<TodoModel>> get todos;
