@@ -2,12 +2,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class TodoModel {
   DocumentReference reference;
+  int id;
   String title;
   bool check;
   Timestamp date;
 
   TodoModel({
     this.reference,
+    this.id,
     this.title = '',
     this.check = false,
     this.date,
@@ -20,21 +22,10 @@ class TodoModel {
         date: doc['date'],
       );
 
-  Future<void> save() async {
-    Map<String, dynamic> data = {
-      'title': title,
-      'check': check,
-      'date': date ?? DateTime.now(),
-    };
-
-    if (reference == null) {
-      reference = await Firestore.instance.collection('todo').add(data);
-    } else {
-      reference.updateData(data);
-    }
-  }
-
-  Future<void> delete() {
-    return reference.delete();
-  }
+  factory TodoModel.fromJson(Map<String, dynamic> json) => TodoModel(
+        id: json['id'],
+        title: json['title'],
+        check: json['check'],
+        date: json['date'],
+      );
 }

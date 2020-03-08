@@ -17,4 +17,24 @@ class TodoRepository implements ITodoRepository {
               .toList(),
         );
   }
+
+  @override
+  Future save(TodoModel model) async {
+    Map<String, dynamic> data = {
+      'title': model.title,
+      'check': model.check,
+      'date': model.date ?? DateTime.now(),
+    };
+
+    if (model.reference == null) {
+      model.reference = await Firestore.instance.collection('todo').add(data);
+    } else {
+      model.reference.updateData(data);
+    }
+  }
+
+  @override
+  Future delete(TodoModel model) {
+    return model.reference.delete();
+  }
 }

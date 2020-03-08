@@ -1,3 +1,4 @@
+import 'package:firebase_todo/app/modules/home/components/todo_component.dart';
 import 'package:firebase_todo/app/modules/home/home_controller.dart';
 import 'package:firebase_todo/app/modules/home/models/todo_model.dart';
 import 'package:flutter/material.dart';
@@ -40,28 +41,10 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
 
           return ListView.builder(
             itemCount: list.length,
-            itemBuilder: (_, index) {
-              TodoModel model = list[index];
-
-              return ListTile(
-                title: Text(model.title),
-                onTap: () => _showDialog(model),
-                leading: Checkbox(
-                  value: model.check,
-                  onChanged: (bool value) {
-                    model.check = value;
-                    model.save();
-                  },
-                ),
-                trailing: IconButton(
-                  icon: Icon(
-                    Icons.delete,
-                    color: Colors.red,
-                  ),
-                  onPressed: model.delete,
-                ),
-              );
-            },
+            itemBuilder: (_, index) => TodoComponent(
+              model: list[index],
+              onTap: () => _showDialog(list[index]),
+            ),
           );
         },
       ),
@@ -88,10 +71,9 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
         ),
         actions: <Widget>[
           FlatButton(
-            onPressed: () async {
-              await model.save();
-              Modular.to.pop();
-            },
+            onPressed: () async => controller.save(model).then(
+                  (i) => Modular.to.pop(),
+                ),
             child: Text('Salvar'),
           ),
         ],
