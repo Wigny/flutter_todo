@@ -71,9 +71,10 @@ class _HomePageState extends ModularState<HomePage, HomeController> {
         ),
         actions: <Widget>[
           FlatButton(
-            onPressed: () async => controller.save(model).then(
-                  (i) => Modular.to.pop(),
-                ),
+            onPressed: () async {
+              await controller.save(model);
+              Modular.to.pop();
+            },
             child: Text('Salvar'),
           ),
         ],

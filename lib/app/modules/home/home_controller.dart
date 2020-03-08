@@ -21,7 +21,7 @@ abstract class _HomeBase with Store {
     todoList = repository.todos.asObservable();
   }
 
-  Future save(TodoModel model) => repository.save(model);
+  Future save(TodoModel model) async => await repository.save(model);
 
-  Future delete(TodoModel model) => repository.delete(model);
+  Future delete(TodoModel model) async => await repository.delete(model);
 }

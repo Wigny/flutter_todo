@@ -5,7 +5,7 @@ class TodoModel {
   int id;
   String title;
   bool check;
-  Timestamp date;
+  DateTime date;
 
   TodoModel({
     this.reference,
@@ -19,13 +19,24 @@ class TodoModel {
         reference: doc.reference,
         title: doc['title'],
         check: doc['check'],
-        date: doc['date'],
+        date: (doc['date'] as Timestamp).toDate(),
       );
 
   factory TodoModel.fromJson(Map<String, dynamic> json) => TodoModel(
         id: json['id'],
         title: json['title'],
         check: json['check'],
-        date: json['date'],
+        date: DateTime.parse(json['date']),
       );
+
+  Map<String, dynamic> toJson() {
+    Map<String, dynamic> json = {
+      "title": title,
+      "check": check,
+      'date': date != null ? date.toIso8601String() : DateTime.now(),
+      'reference': reference,
+    };
+
+    return json;
+  }
 }
